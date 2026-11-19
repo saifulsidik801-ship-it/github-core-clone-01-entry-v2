@@ -1,11 +1,23 @@
 // Launcher: spawns ./forge, registers its port with the make.fun harness,
 // waits for /done, then kills the child and exits.
+//
+// The forge binary is resolved relative to THIS file (not the process
+// working directory): the trial runs `node /bot/main.ts` from an arbitrary
+// cwd, so a bare "./forge" would fail with ENOENT and the forge would
+// never come up (score 0).
+
 import { spawn } from "node:child_process";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
 
 const envUrl = process.env.MAKEFUN_ENV_URL;
-const forge = spawn("./forge", [], {
+const forgePath = path.join(path.dirname(fileURLToPath(import.meta.url)), "forge");
+
+const forge = spawn(forgePath, [], {
   stdio: ["ignore", "pipe", "inherit"],
-  env: { ...process.env, PORT: process.env.PORT ?? "" },
+  // Force an ephemeral port: the forge prints "PORT <n>" only when PORT
+  // is empty, and the launcher registers exactly that port.
+  env: { ...process.env, PORT: "" },
 });
 
 let port: number | null = null;
@@ -17,6 +29,9 @@ const portPromise = new Promise<number>((resolve, reject) => {
     buf += chunk.toString();
     const m = buf.match(/PORT\s+(\d+)/);
     if (m) resolve(Number(m[1]));
+  });
+  forge.on("error", (err) => {
+    if (port === null) reject(new Error(`failed to spawn forge: ${err.message}`));
   });
   forge.on("exit", (code) => {
     if (port === null) reject(new Error(`forge exited early with code ${code}`));
