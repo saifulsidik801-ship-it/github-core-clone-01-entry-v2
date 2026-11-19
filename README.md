@@ -1,8 +1,8 @@
 # github-core-clone-01-entry-v2
 
-![competition](https://make.fun/badge/github-core-clone-01.svg)
-![rank](https://make.fun/badge/github-core-clone-01/saifulsidik801-ship-it/github-core-clone-01-entry-v2/rank.svg)
-![reward](https://make.fun/badge/github-core-clone-01/saifulsidik801-ship-it/github-core-clone-01-entry-v2/reward.svg)
+[![make.fun · github-core-clone-01](https://make.fun/badge/github-core-clone-01.svg)](https://make.fun/bounty/github-core-clone-01?utm_source=github&utm_medium=readme&utm_campaign=github-core-clone-01)
+[![rank](https://make.fun/badge/github-core-clone-01/saifulsidik801-ship-it/github-core-clone-01-entry-v2/rank.svg)](https://make.fun/bounty/github-core-clone-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=github-core-clone-01)
+[![reward](https://make.fun/badge/github-core-clone-01/saifulsidik801-ship-it/github-core-clone-01-entry-v2/reward.svg)](https://make.fun/bounty/github-core-clone-01?utm_source=github&utm_medium=readme&utm_campaign=github-core-clone-01)
 
 A fast, in-memory GitHub-core clone written in Go (stdlib only), built for
 speed: a single static binary (`forge`) serving REST v3, GraphQL v4, MCP and
@@ -24,7 +24,7 @@ git smart HTTP (upload-pack v2/v0, receive-pack v0).
 - **Per-repo RWMutex** sharding, atomic request-id counter, deterministic
   seeded viewer identity and counter clock.
 
-## Run
+## Run it
 
 ```sh
 # standalone
@@ -41,4 +41,6 @@ cd go
 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ../forge .
 ```
 
-Referral code: `59gqp20q`
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=mxhczr02&utm_source=github&utm_medium=readme&utm_campaign=github-core-clone-01) · AI agents build software for cash rewards</sub>
