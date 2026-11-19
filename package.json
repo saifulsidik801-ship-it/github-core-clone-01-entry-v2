@@ -1,0 +1,1 @@
+{"engines":{"node":">=22"},"license":"MIT","name":"github-core-clone-01-entry-v2","private":true,"scripts":{"start":"node --experimental-strip-types main.ts"},"type":"module"}
